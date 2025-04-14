@@ -61,8 +61,7 @@
         gap: 10px;
         margin-top: 10px;
       }
-      .download-button,
-      .copy-button {
+      .download-button {
         background-color: #024b7a;
         color: white;
         padding: 10px 20px;
@@ -70,15 +69,8 @@
         border-radius: 5px;
         cursor: pointer;
       }
-      .download-button:hover,
-      .copy-button:hover {
+      .download-button:hover {
         background-color: #046fa5;
-      }
-      .copy-button {
-        background-color: #4caf50;
-      }
-      .copy-button:hover {
-        background-color: #45a049;
       }
       .table-wrapper {
         height: 150px;
@@ -137,9 +129,6 @@
         <button class="download-button" onclick="downloadExcel()">
           Download Excel File
         </button>
-        <button class="copy-button" onclick="copyAllData()">
-          Copy All Data
-        </button>
       </div>
       {% endif %}
 
@@ -174,15 +163,6 @@
     <script>
       function downloadExcel() {
         document.getElementById("download-form").submit();
-      }
-
-      function copyAllData() {
-        const textArea = document.getElementById("all-data");
-        textArea.style.display = "block";
-        textArea.select();
-        document.execCommand("copy");
-        textArea.style.display = "none";
-        alert("Data copied to clipboard!");
       }
     </script>
   </body>
