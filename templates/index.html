@@ -1,190 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+ <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SADE Containers - PDF Processor</title>
-    <style>
-      body {
-        font-family: Calibri, sans-serif;
-        background-color: #f4f4f4;
-        text-align: center;
-        padding: 50px;
-      }
-      h1 {
-        color: #024b7a;
-      }
-      .container {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-        width: 50%;
-      }
-      .logo {
-        margin-bottom: 20px;
-      }
-      input[type="file"] {
-        padding: 10px;
-      }
-      input[type="submit"] {
-        background-color: #024b7a;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      input[type="submit"]:hover {
-        background-color: #046fa5;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f2f2f2;
-        position: sticky;
-        top: 0;
-      }
-      .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-      .download-button,
-      .copy-button {
-        background-color: #024b7a;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      .download-button:hover,
-      .copy-button:hover {
-        background-color: #046fa5;
-      }
-      .copy-button {
-        background-color: #4caf50;
-      }
-      .copy-button:hover {
-        background-color: #45a049;
-      }
-      .table-wrapper {
-        height: 150px;
-        overflow-y: auto;
-        margin-bottom: 20px;
-        display: block;
-      }
-    </style>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>SADE Containers - PDF Processor</title>
+   <style>
+    body {
+     font-family: Calibri, sans-serif;
+     background-color: #f4f4f4;
+     text-align: center;
+     padding: 50px;
+    }
+    h1 {
+     color: #024b7a;
+    }
+    .container {
+     background-color: white;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+     display: inline-block;
+     width: 50%;
+    }
+    .logo {
+     margin-bottom: 20px;
+    }
+    input[type="file"] {
+     padding: 10px;
+    }
+    input[type="submit"] {
+     background-color: #024b7a;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+    }
+    input[type="submit"]:hover {
+     background-color: #046fa5;
+    }
+    table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+    }
+    th,
+    td {
+     border: 1px solid #ddd;
+     padding: 8px;
+     text-align: left;
+    }
+    th {
+     background-color: #f2f2f2;
+     position: sticky;
+     top: 0;
+    }
+    .button-container {
+     display: flex;
+     justify-content: center;
+     gap: 10px;
+     margin-top: 10px;
+    }
+    .download-button,
+    .copy-button {
+     background-color: #024b7a;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+    }
+    .download-button:hover,
+    .copy-button:hover {
+     background-color: #046fa5;
+    }
+    .copy-button {
+     background-color: #4caf50;
+    }
+    .copy-button:hover {
+     background-color: #45a049;
+    }
+    .table-wrapper {
+     height: 150px;
+     overflow-y: auto;
+     margin-bottom: 20px;
+     display: block;
+    }
+   </style>
   </head>
   <body>
-    <div class="container">
-      <img
-        src="https://images.squarespace-cdn.com/content/v1/6628d90f34b3cc45ef1e7e3e/e77f24cb-ac22-4e35-80e8-ab3a35664cff/SADE_logo.png?format=1500w"
-        alt="SADE Containers Logo"
-        width="150"
-        class="logo"
-      />
-      <h1>Upload Your PDF File</h1>
-      <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" required />
-        <br /><br />
-        <input type="submit" value="Upload and Process" />
-      </form>
+   <div class="container">
+    <img
+     src="https://images.squarespace-cdn.com/content/v1/6628d90f34b3cc45ef1e7e3e/e77f24cb-ac22-4e35-80e8-ab3a35664cff/SADE_logo.png?format=1500w"
+     alt="SADE Containers Logo"
+     width="150"
+     class="logo"
+    />
+    <h1>Upload Your PDF File</h1>
+    <form method="POST" enctype="multipart/form-data">
+     <input type="file" name="file" required />
+     <br /><br />
+     <input type="submit" value="Upload and Process" />
+    </form>
+ 
 
-      {% if data %}
-      <h1>Extracted Data from PDF</h1>
+    {% if data %}
+    <h1>Extracted Data from PDF</h1>
+ 
 
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Container</th>
-              <th>Size/Type</th>
-              <th>Condition</th>
-              <th>Supplier</th>
-              <th>Supplier Release Ref</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for i, row in data %}
-            <tr>
-              <td>{{ row['Container'] }}</td>
-              <td>{{ row['Size/Type'] }}</td>
-              <td>{{ row['Condition'] }}</td>
-              <td>{{ row['Supplier'] }}</td>
-              <td>{{ row['Supplier Release Ref'] }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-
-      <p><b>Total Rows: {{ data|length }}</b></p>
-
-      <div class="button-container">
-        <button class="download-button" onclick="downloadExcel()">
-          Download Excel File
-        </button>
-        <button class="copy-button" onclick="copyAllData()">
-          Copy All Data
-        </button>
-      </div>
-      {% endif %}
-
-      <form
-        id="download-form"
-        action="/download_excel"
-        method="GET"
-        style="display: none"
-      >
-        {% for i, row in data %}
-        <input type="hidden" name="Container" value="{{ row['Container'] }}" />
-        <input type="hidden" name="Size/Type" value="{{ row['Size/Type'] }}" />
-        <input type="hidden" name="Condition" value="{{ row['Condition'] }}" />
-        <input type="hidden" name="Supplier" value="{{ row['Supplier'] }}" />
-        <input
-          type="hidden"
-          name="Supplier Release Ref"
-          value="{{ row['Supplier Release Ref'] }}"
-        />
-        {% endfor %}
-      </form>
-
-      <textarea id="all-data" style="display: none">
- Container Size/Type Condition Supplier Supplier Release Ref
- {% for i, row in data %}
- {{ row['Container'] }} {{ row['Size/Type'] }} {{ row['Condition'] }}
- {{ row['Supplier'] }} {{ row['Supplier Release Ref'] }}
- {% endfor %}
-    </textarea
-      >
+    <div class="table-wrapper">
+     <table>
+      <thead>
+       <tr>
+        <th>Container</th>
+        <th>Size/Type</th>
+        <th>Condition</th>
+        <th>Supplier</th>
+        <th>Supplier Release Ref</th>
+       </tr>
+      </thead>
+      <tbody>
+       {% for i, row in data %}
+       <tr>
+        <td>{{ row['Container'] }}</td>
+        <td>{{ row['Size/Type'] }}</td>
+        <td>{{ row['Condition'] }}</td>
+        <td>{{ row['Supplier'] }}</td>
+        <td>{{ row['Supplier Release Ref'] }}</td>
+       </tr>
+       {% endfor %}
+      </tbody>
+     </table>
     </div>
+ 
 
-    <script>
-      function downloadExcel() {
-        document.getElementById("download-form").submit();
-      }
+    <p><b>Total Rows: {{ data|length }}</b></p>
+ 
 
-      function copyAllData() {
-        const textArea = document.getElementById("all-data");
-        textArea.style.display = "block";
-        textArea.select();
-        document.execCommand("copy");
-        textArea.style.display = "none";
-        alert("Data copied to clipboard!");
-      }
-    </script>
+    <div class="button-container">
+     <button class="download-button" onclick="downloadExcel()">
+      Download Excel File
+     </button>
+     <button class="copy-button" onclick="copyAllData()">
+      Copy All Data
+     </button>
+    </div>
+    {% endif %}
+ 
+
+    <form
+     id="download-form"
+     action="/download_excel"
+     method="GET"
+     style="display: none"
+    >
+     {% for i, row in data %}
+     <input type="hidden" name="Container" value="{{ row['Container'] }}" />
+     <input type="hidden" name="Size/Type" value="{{ row['Size/Type'] }}" />
+     <input type="hidden" name="Condition" value="{{ row['Condition'] }}" />
+     <input type="hidden" name="Supplier" value="{{ row['Supplier'] }}" />
+     <input
+      type="hidden"
+      name="Supplier Release Ref"
+      value="{{ row['Supplier Release Ref'] }}"
+     />
+     {% endfor %}
+    </form>
+ 
+
+    <textarea id="all-data" style="display: none"></textarea>
+   </div>
+ 
+
+   <script>
+    function downloadExcel() {
+     document.getElementById("download-form").submit();
+    }
+ 
+
+    function copyAllData() {
+     let csvContent = "Container,Size/Type,Condition,Supplier,Supplier Release Ref\\n";
+     {% for i, row in data %}
+      csvContent += "{{ row['Container'] }},{{ row['Size/Type'] }},{{ row['Condition'] }},{{ row['Supplier'] }},{{ row['Supplier Release Ref'] }}\\n";
+     {% endfor %}
+ 
+
+     const textArea = document.getElementById("all-data");
+     textArea.value = csvContent;
+     textArea.style.display = "block";
+     textArea.select();
+     document.execCommand("copy");
+     textArea.style.display = "none";
+     alert("Data copied to clipboard!");
+    }
+   </script>
   </body>
-</html>
+ </html>
